@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sífilis - Mega Apresentação | Trabalho Escolar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #0a0a0a;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .presentation {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            background: radial-gradient(circle at 20% 30%, #0d1b2a, #0a0a0a);
+        }
+
+        /* Efeito de partículas no fundo */
+        .presentation::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(rgba(244, 162, 97, 0.08) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.6s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .slide-content {
+            max-width: 1300px;
+            width: 88%;
+            margin: 0 auto;
+            padding: 2rem 2.5rem;
+            background: rgba(13, 27, 42, 0.85);
+            backdrop-filter: blur(12px);
+            border-radius: 2.5rem;
+            animation: fadeInUp 0.6s ease;
+            border: 1px solid rgba(244, 162, 97, 0.2);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #f4a261 0%, #e76f51 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #f4a261;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            border-bottom: 4px solid #e76f51;
+            padding-bottom: 8px;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #cbd5e0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .row {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .col {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .texto {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #e2e8f0;
+        }
+
+        .texto p {
+            margin-bottom: 1rem;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 1.2rem;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid rgba(244, 162, 97, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background: rgba(244, 162, 97, 0.1);
+            border-color: rgba(244, 162, 97, 0.3);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .card h4 {
+            font-size: 1.3rem;
+            color: #f4a261;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #cbd5e0;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .stat {
+            background: linear-gradient(135deg, rgba(244, 162, 97, 0.15), rgba(231, 111, 81, 0.1));
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            text-align: center;
+            min-width: 170px;
+            border: 1px solid rgba(244, 162, 97, 0.2);
+        }
+
+        .stat i {
+            font-size: 2.5rem;
+            color: #f4a261;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat .numero {
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+        }
+
+        .stat .label {
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        .tabela-mitos {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .tabela-mitos th, .tabela-mitos td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .tabela-mitos th {
+            background: rgba(244, 162, 97, 0.15);
+            color: #f4a261;
+            font-weight: 600;
+        }
+
+        .mito { color: #e76f51; }
+        .verdade { color: #2a9d8f; }
+
+        .quiz-container {
+            background: rgba(0,0,0,0.3);
+            border-radius: 1.2rem;
+            padding: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .quiz-pergunta {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #f4a261;
+            margin-bottom: 0.8rem;
+        }
+
+        .quiz-opcao {
+            background: rgba(255,255,255,0.05);
+            padding: 0.7rem;
+            margin: 0.4rem 0;
+            border-radius: 0.6rem;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #e2e8f0;
+        }
+
+        .quiz-opcao:hover {
+            background: rgba(244, 162, 97, 0.3);
+        }
+
+        .quiz-resposta {
+            margin-top: 0.8rem;
+            padding: 0.7rem;
+            border-radius: 0.6rem;
+            display: none;
+        }
+
+        .quiz-resposta.correto {
+            background: rgba(42, 157, 143, 0.3);
+            color: #2a9d8f;
+            display: block;
+        }
+
+        .quiz-resposta.errado {
+            background: rgba(231, 111, 81, 0.3);
+            color: #e76f51;
+            display: block;
+        }
+
+        .prevencao-lista {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .prevencao-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 1rem;
+            border-radius: 1rem;
+        }
+
+        .prevencao-item i {
+            font-size: 1.6rem;
+            color: #f4a261;
+        }
+
+        .faq-item {
+            background: rgba(255,255,255,0.03);
+            border-radius: 1rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .faq-pergunta {
+            font-weight: 700;
+            color: #f4a261;
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-resposta {
+            color: #cbd5e0;
+            font-size: 0.95rem;
+        }
+
+        .linha-tempo {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .tempo-item {
+            text-align: center;
+            flex: 1;
+            min-width: 100px;
+            padding: 1rem;
+        }
+
+        .tempo-ano {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #f4a261;
+        }
+
+        .tempo-evento {
+            font-size: 0.85rem;
+            color: #cbd5e0;
+        }
+
+        .passo-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(244, 162, 97, 0.1);
+            padding: 0.8rem;
+            margin: 0.6rem 0;
+            border-radius: 1rem;
+        }
+
+        .passo-numero {
+            width: 36px;
+            height: 36px;
+            background: #f4a261;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #0a0a0a;
+        }
+
+        .depoimento {
+            background: linear-gradient(135deg, rgba(244, 162, 97, 0.1), rgba(231, 111, 81, 0.05));
+            border-radius: 1rem;
+            padding: 1.2rem;
+            margin: 1rem;
+            font-style: italic;
+            border-left: 4px solid #f4a261;
+        }
+
+        .glossario-item {
+            display: flex;
+            gap: 1rem;
+            background: rgba(255,255,255,0.03);
+            padding: 0.7rem;
+            margin: 0.5rem 0;
+            border-radius: 0.8rem;
+        }
+
+        .glossario-termo {
+            font-weight: 700;
+            color: #f4a261;
+            min-width: 120px;
+        }
+
+        .btn-pdf {
+            background: linear-gradient(135deg, #f4a261, #e76f51);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: 0.3s;
+        }
+
+        .btn-pdf:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(244, 162, 97, 0.4);
+        }
+
+        .ranking-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255,255,255,0.03);
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border-radius: 0.8rem;
+        }
+
+        .ranking-pos {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #f4a261;
+            width: 50px;
+        }
+
+        .nav {
+            position: fixed;
+            bottom: 25px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            z-index: 100;
+        }
+
+        .nav button {
+            background: rgba(244, 162, 97, 0.9);
+            border: none;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: 0.3s;
+            color: #0a0a0a;
+            font-weight: bold;
+            backdrop-filter: blur(4px);
+        }
+
+        .nav button:hover {
+            background: #f4a261;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(244, 162, 97, 0.5);
+        }
+
+        .indicadores {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.6rem;
+            z-index: 99;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 85%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
+            padding: 0.5rem 1.2rem;
+            border-radius: 2rem;
+        }
+
+        .dot {
+            width: 35px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .dot.active {
+            background: #f4a261;
+            width: 55px;
+            box-shadow: 0 0 8px rgba(244, 162, 97, 0.5);
+        }
+
+        .counter {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            padding: 8px 18px;
+            border-radius: 30px;
+            color: #f4a261;
+            font-weight: 700;
+            z-index: 100;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 1.6rem; }
+            .slide-content { padding: 1.2rem; width: 95%; }
+            .texto { font-size: 0.9rem; }
+            .nav button { width: 45px; height: 45px; }
+            .dot { width: 20px; }
+            .dot.active { width: 35px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="presentation">
+    <!-- SLIDE 1 - CAPA -->
+    <div class="slide active" id="slide1">
+        <div class="slide-content">
+            <div style="text-align: center;">
+                <i class="fas fa-bacterium" style="font-size: 5rem; color: #f4a261; margin-bottom: 1rem;"></i>
+                <h1>SÍFILIS</h1>
+                <p class="subtitle">Informação • Prevenção • Cura</p>
+                <div class="stats">
+                    <div class="stat"><i class="fas fa-globe"></i><div class="numero">8M+</div><div class="label">Casos/ano no mundo</div></div>
+                    <div class="stat"><i class="fas fa-heartbeat"></i><div class="numero">100%</div><div class="label">Curável</div></div>
+                    <div class="stat"><i class="fas fa-syringe"></i><div class="numero">Gratuito</div><div class="label">Tratamento SUS</div></div>
+                </div>
+                <p class="subtitle" style="font-size: 0.9rem; margin-top: 1rem;"><i class="fas fa-arrow-left"></i> <i class="fas fa-arrow-right"></i> Navegue com as setas</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 2 - O QUE É -->
+    <div class="slide" id="slide2">
+        <div class="slide-content">
+            <h2>🔬 O que é Sífilis?</h2>
+            <div class="row">
+                <div class="col texto">
+                    <p><strong style="color: #f4a261;">Infecção Sexualmente Transmissível (IST)</strong> causada pela bactéria <strong>Treponema pallidum</strong>.</p>
+                    <p>Afeta diversos órgãos e, se não tratada, pode causar danos graves ao coração, cérebro e sistema nervoso.</p>
+                    <p><strong style="color: #2a9d8f;">✅ TEM CURA!</strong> O tratamento com penicilina é gratuito e eficaz.</p>
+                </div>
+                <div class="col texto">
+                    <div style="background: rgba(244,162,97,0.1); border-radius: 1.5rem; padding: 1.5rem; text-align: center;">
+                        <i class="fas fa-microscope" style="font-size: 4rem; color: #f4a261;"></i>
+                        <p style="margin-top: 0.5rem;">Treponema pallidum<br>Bactéria espiroqueta</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 3 - COMO A BACTÉRIA AGE (NOVO) -->
+    <div class="slide" id="slide3">
+        <div class="slide-content">
+            <h2>🦠 Como a bactéria age no corpo?</h2>
+            <div class="row">
+                <div class="col texto">
+                    <p><i class="fas fa-arrow-right" style="color: #f4a261;"></i> Entra por pequenas feridas ou mucosas</p>
+                    <p><i class="fas fa-arrow-right" style="color: #f4a261;"></i> Se espalha pelo sangue e sistema linfático</p>
+                    <p><i class="fas fa-arrow-right" style="color: #f4a261;"></i> Pode atingir qualquer órgão do corpo</p>
+                    <p><i class="fas fa-arrow-right" style="color: #f4a261;"></i> Se "esconde" do sistema imunológico</p>
+                    <p><i class="fas fa-arrow-right" style="color: #f4a261;"></i> Por isso o corpo NÃO elimina sozinho!</p>
+                </div>
+                <div class="col texto">
+                    <div style="background: rgba(244,162,97,0.1); border-radius: 1.5rem; padding: 1.5rem; text-align: center;">
+                        <i class="fas fa-tachometer-alt" style="font-size: 4rem; color: #e76f51;"></i>
+                        <p style="margin-top: 0.5rem;">Infecção silenciosa<br>Pode ficar anos sem sintomas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 4 - ESTÁGIOS -->
+    <div class="slide" id="slide4">
+        <div class="slide-content">
+            <h2>📊 Estágios da Infecção</h2>
+            <div class="cards-grid">
+                <div class="card"><div class="card-icon">🔴</div><h4>Primário</h4><p>Ferida indolor (cancro) que desaparece sozinha</p></div>
+                <div class="card"><div class="card-icon">🟠</div><h4>Secundário</h4><p>Manchas no corpo, febre, ínguas</p></div>
+                <div class="card"><div class="card-icon">🟡</div><h4>Latente</h4><p>Fase silenciosa, sem sintomas</p></div>
+                <div class="card"><div class="card-icon">🔴⚡</div><h4>Terciário</h4><p>Danos neurológicos e cardíacos</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 5 - TRANSMISSÃO -->
+    <div class="slide" id="slide5">
+        <div class="slide-content">
+            <h2>⚠️ Como se transmite?</h2>
+            <div class="row">
+                <div class="col texto">
+                    <p><i class="fas fa-venus-mars"></i> <strong>Relações sexuais</strong> sem preservativo</p>
+                    <p><i class="fas fa-baby"></i> <strong>Mãe para filho</strong> (sífilis congênita)</p>
+                    <p><i class="fas fa-syringe"></i> <strong>Compartilhamento de seringas</strong></p>
+                    <p><i class="fas fa-kiss"></i> <strong>Beijo</strong> (se houver feridas na boca)</p>
+                </div>
+                <div class="col texto">
+                    <div style="background: rgba(231,111,81,0.15); border-radius: 1.5rem; padding: 1.5rem; text-align: center;">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: #e76f51;"></i>
+                        <p style="margin-top: 0.5rem;">A transmissão ocorre<br><strong>MESMO SEM SINTOMAS!</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 6 - PREVENÇÃO -->
+    <div class="slide" id="slide6">
+        <div class="slide-content">
+            <h2>🛡️ Prevenção</h2>
+            <div class="prevencao-lista">
+                <div class="prevencao-item"><i class="fas fa-condom"></i><span>Use camisinha em TODAS as relações</span></div>
+                <div class="prevencao-item"><i class="fas fa-flask"></i><span>Faça testes regulares de IST</span></div>
+                <div class="prevencao-item"><i class="fas fa-baby-carriage"></i><span>Pré-natal completo para gestantes</span></div>
+                <div class="prevencao-item"><i class="fas fa-comments"></i><span>Converse com seu parceiro(a)</span></div>
+                <div class="prevencao-item"><i class="fas fa-hospital-user"></i><span>Procure atendimento ao menor sinal</span></div>
+                <div class="prevencao-item"><i class="fas fa-hand-holding-heart"></i><span>Trate ambos os parceiros</span></div>
+            </div>
+            <div style="text-align: center; margin-top: 1rem;">
+                <div style="background: rgba(244,162,97,0.15); display: inline-block; padding: 0.5rem 1.5rem; border-radius: 2rem;">
+                    <i class="fas fa-shield-virus"></i> NÃO EXISTE VACINA contra sífilis!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 7 - TRATAMENTO -->
+    <div class="slide" id="slide7">
+        <div class="slide-content">
+            <h2>💉 Tratamento e Cura</h2>
+            <div class="row">
+                <div class="col texto">
+                    <p><strong style="color: #2a9d8f;">✔️ A SÍFILIS TEM CURA!</strong></p>
+                    <p>🔹 Penicilina Benzatina (Benzetacil)</p>
+                    <p>🔹 Fornecida <strong>gratuitamente pelo SUS</strong></p>
+                    <p>🔹 Bactéria NÃO desenvolveu resistência</p>
+                    <p>🔹 Após o tratamento, faça novos exames</p>
+                </div>
+                <div class="col texto">
+                    <div style="background: rgba(42,157,143,0.15); border-radius: 1.5rem; padding: 1.5rem; text-align: center;">
+                        <i class="fas fa-syringe" style="font-size: 4rem; color: #2a9d8f;"></i>
+                        <p style="margin-top: 0.5rem;">Penicilina - 100% eficaz desde 1943</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 8 - SÍFILIS CONGÊNITA -->
+    <div class="slide" id="slide8">
+        <div class="slide-content">
+            <h2>👶 Sífilis Congênita</h2>
+            <div class="row">
+                <div class="col texto">
+                    <p>Mãe com sífilis <strong>não tratada</strong> transmite para o bebê.</p>
+                    <p><strong style="color: #e76f51;">Consequências graves:</strong> aborto, morte ao nascer, malformações, surdez, cegueira</p>
+                    <p><strong style="color: #2a9d8f;">✅ Tratamento da gestante protege o bebê completamente!</strong></p>
+                </div>
+                <div class="col texto">
+                    <div style="background: rgba(244,162,97,0.1); border-radius: 1.5rem; padding: 1.5rem; text-align: center;">
+                        <i class="fas fa-fetus" style="font-size: 4rem; color: #f4a261;"></i>
+                        <p style="margin-top: 0.5rem;">Pré-natal previne 100% dos casos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 9 - HISTÓRIA + FAMOSOS -->
+    <div class="slide" id="slide9">
+        <div class="slide-content">
+            <h2>📜 História e Famosos</h2>
+            <div class="linha-tempo">
+                <div class="tempo-item"><div class="tempo-ano">1495</div><div class="tempo-evento">1ª epidemia na Europa</div></div>
+                <div class="tempo-item"><div class="tempo-ano">1910</div><div class="tempo-evento">Salvarsan (1º tratamento)</div></div>
+                <div class="tempo-item"><div class="tempo-ano">1943</div><div class="tempo-evento">Penicilina</div></div>
+            </div>
+            <div class="cards-grid">
+                <div class="card"><div class="card-icon">👤</div><h4>Al Capone</h4><p>Morreu por complicações</p></div>
+                <div class="card"><div class="card-icon">📚</div><h4>Nietzsche</h4><p>Filósofo teve sífilis</p></div>
+                <div class="card"><div class="card-icon">🎨</div><h4>Van Gogh</h4><p>Possivelmente teve</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 10 - ORIGEM DO NOME (NOVO) -->
+    <div class="slide" id="slide10">
+        <div class="slide-content">
+            <h2>📖 Origem do nome "Sífilis"</h2>
+            <div class="row">
+                <div class="col texto">
+                    <p><i class="fas fa-quote-left" style="color: #f4a261;"></i> Poema <strong>"Syphilis sive morbus gallicus"</strong> (1530)</p>
+                    <p><i class="fas fa-feather-alt"></i> Escrito por <strong>Girolamo Fracastoro</strong></p>
+                    <p><i class="fas fa-user"></i> Personagem pastor chamado <strong>"Syphilus"</strong></p>
+                    <p><i class="fas fa-globe"></i> Primeira vez que usaram o termo para a doença</p>
+                </div>
+                <div class="col texto">
+                    <div style="background: rgba(244,162,97,0.1); border-radius: 1.5rem; padding: 1.5rem; text-align: center;">
+                        <i class="fas fa-book-open" style="font-size: 4rem; color: #f4a261;"></i>
+                        <p style="margin-top: 0.5rem;">Curiosidade: Também foi chamada de<br>"Doença Francesa" e "Mal Napolitano"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 11 - CASO TUSKEGEE (NOVO) -->
+    <div class="slide" id="slide11">
+        <div class="slide-content">
+            <h2>⚠️ Caso Tuskegee (1932-1972)</h2>
+            <div class="row">
+                <div class="col texto">
+                    <p><i class="fas fa-skull" style="color: #e76f51;"></i> Estudo cruel com homens negros com sífilis</p>
+                    <p><i class="fas fa-ban"></i> Não receberam tratamento mesmo após descoberta da penicilina</p>
+                    <p><i class="fas fa-gavel"></i> Levou a leis de proteção de pacientes</p>
+                    <p><strong style="color: #2a9d8f;">✅ Hoje: consentimento informado e ética médica são obrigatórios!</strong></p>
+                </div>
+                <div class="col texto">
+                    <div style="background: rgba(231,111,81,0.15); border-radius: 1.5rem; padding: 1.5rem; text-align: center;">
+                        <i class="fas fa-balance-scale" style="font-size: 4rem; color: #e76f51;"></i>
+                        <p style="margin-top: 0.5rem;">Maior escândalo de ética médica da história dos EUA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 12 - DADOS DO BRASIL -->
+    <div class="slide" id="slide12">
+        <div class="slide-content">
+            <h2>📊 Sífilis no Brasil</h2>
+            <div class="stats">
+                <div class="stat"><i class="fas fa-chart-line"></i><div class="numero">200 mil</div><div class="label">Casos/ano</div></div>
+                <div class="stat"><i class="fas fa-arrow-up"></i><div class="numero">+400%</div><div class="label">Aumento em 10 anos</div></div>
+                <div class="stat"><i class="fas fa-baby"></i><div class="numero">8 mil</div><div class="label">Bebês com sífilis congênita/ano</div></div>
+            </div>
+            <div class="cards-grid">
+                <div class="card"><h4>Sudeste</h4><p>40% dos casos (80 mil)</p></div>
+                <div class="card"><h4>Nordeste</h4><p>25% dos casos (50 mil)</p></div>
+                <div class="card"><h4>Sul</h4><p>18% dos casos (36 mil)</p></div>
+                <div class="card"><h4>Faixa etária</h4><p>20-29 anos (mais afetada)</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 13 - PAÍSES COM MAIS CASOS (NOVO) -->
+    <div class="slide" id="slide13">
+        <div class="slide-content">
+            <h2>🌍 Sífilis no mundo - Ranking</h2>
+            <div class="ranking-item"><div class="ranking-pos">1º</div><div><strong>África Subsaariana</strong> - Mais de 2 milhões de casos/ano</div></div>
+            <div class="ranking-item"><div class="ranking-pos">2º</div><div><strong>Américas</strong> - 1,5 milhão de casos/ano</div></div>
+            <div class="ranking-item"><div class="ranking-pos">3º</div><div><strong>Europa Oriental</strong> - Aumento preocupante</div></div>
+            <div class="ranking-item"><div class="ranking-pos">4º</div><div><strong>Brasil</strong> - Entre os 10 países com mais casos</div></div>
+            <div class="ranking-item"><div class="ranking-pos">5º</div><div><strong>Sudeste Asiático</strong> - Números crescentes</div></div>
+        </div>
+    </div>
+
+    <!-- SLIDE 14 - MITOS E VERDADES -->
+    <div class="slide" id="slide14">
+        <div class="slide-content">
+            <h2>🎭 Mitos e Verdades</h2>
+            <table class="tabela-mitos">
+                <tr><th>Mito</th><th>Verdade</th></tr>
+                <tr><td class="mito">"Sífilis tem cheiro"</td><td class="verdade">❌ Não tem cheiro</td></tr>
+                <tr><td class="mito">"Só pega quem tem muitos parceiros"</td><td class="verdade">❌ Basta um contato desprotegido</td></tr>
+                <tr><td class="mito">"Depois de curada, não pega de novo"</td><td class="verdade">❌ Pode pegar novamente (não gera imunidade)</td></tr>
+                <tr><td class="mito">"Camisinha não previne"</td><td class="verdade">✅ Previne SIM!</td></tr>
+                <tr><td class="mito">"Sífilis não tem cura"</td><td class="verdade">✅ VERDADE! Tem cura</td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- SLIDE 15 - TIPOS DE EXAMES -->
+    <div class="slide" id="slide15">
+        <div class="slide-content">
+            <h2>🧪 Tipos de Exames</h2>
+            <div class="cards-grid">
+                <div class="card"><div class="card-icon">⚡</div><h4>Teste Rápido</h4><p>Resultado em 15-30 minutos, feito na UBS</p></div>
+                <div class="card"><div class="card-icon">🩸</div><h4>VDRL</h4><p>Exame de sangue tradicional</p></div>
+                <div class="card"><div class="card-icon">🔬</div><h4>FTA-ABS</h4><p>Exame confirmatório</p></div>
+                <div class="card"><div class="card-icon">🧬</div><h4>PCR</h4><p>Detecta o DNA da bactéria</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 16 - PASSO A PASSO DO TESTE -->
+    <div class="slide" id="slide16">
+        <div class="slide-content">
+            <h2>⏱️ Passo a Passo do Teste Rápido</h2>
+            <div class="passo-item"><div class="passo-numero">1</div><span>📋 Cadastro na UBS (5 minutos)</span></div>
+            <div class="passo-item"><div class="passo-numero">2</div><span>💉 Fura-dedo (picadinha rápida e indolor)</span></div>
+            <div class="passo-item"><div class="passo-numero">3</div><span>🩸 Gota de sangue no teste</span></div>
+            <div class="passo-item"><div class="passo-numero">4</div><span>⏱️ Aguardar 15-30 minutos</span></div>
+            <div class="passo-item"><div class="passo-numero">5</div><span>📊 Resultado na hora!</span></div>
+        </div>
+    </div>
+
+    <!-- SLIDE 17 - O QUE FAZER SE DER POSITIVO (NOVO) -->
+    <div class="slide" id="slide17">
+        <div class="slide-content">
+            <h2>💚 POSITIVO? CALMA!</h2>
+            <div class="passo-item"><div class="passo-numero">1</div><span>😌 Não entre em pânico - TEM CURA!</span></div>
+            <div class="passo-item"><div class="passo-numero">2</div><span>🏥 Procure atendimento médico na mesma UBS</span></div>
+            <div class="passo-item"><div class="passo-numero">3</div><span>💉 Inicie o tratamento com penicilina</span></div>
+            <div class="passo-item"><div class="passo-numero">4</div><span>💬 Avise seu(sua) parceiro(a)</span></div>
+            <div class="passo-item"><div class="passo-numero">5</div><span>🚫 Evite relações sexuais durante o tratamento</span></div>
+            <div class="passo-item"><div class="passo-numero">6</div><span>✅ Faça exames de controle após o fim</span></div>
+        </div>
+    </div>
+
+    <!-- SLIDE 18 - PROFISSIONAIS -->
+    <div class="slide" id="slide18">
+        <div class="slide-content">
+            <h2>👨‍⚕️ Profissionais que tratam</h2>
+            <div class="cards-grid">
+                <div class="card"><div class="card-icon">🩺</div><h4>Clínico Geral</h4></div>
+                <div class="card"><div class="card-icon">🦠</div><h4>Infectologista</h4></div>
+                <div class="card"><div class="card-icon">👩‍⚕️</div><h4>Ginecologista</h4></div>
+                <div class="card"><div class="card-icon">👨‍⚕️</div><h4>Urologista</h4></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 19 - COMPLICAÇÕES -->
+    <div class="slide" id="slide19">
+        <div class="slide-content">
+            <h2>⚠️ Complicações se não tratada</h2>
+            <div class="cards-grid">
+                <div class="card"><div class="card-icon">🧠</div><h4>Neurossífilis</h4><p>Danos ao cérebro</p></div>
+                <div class="card"><div class="card-icon">❤️</div><h4>Problemas cardíacos</h4><p>Aneurisma</p></div>
+                <div class="card"><div class="card-icon">👁️</div><h4>Cegueira</h4></div>
+                <div class="card"><div class="card-icon">🦻</div><h4>Surdez</h4></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 20 - PRECONCEITO -->
+    <div class="slide" id="slide20">
+        <div class="slide-content">
+            <h2>💔 Preconceito e Estigma</h2>
+            <div class="depoimento">
+                <i class="fas fa-quote-left"></i> Tive sífilis, fiz o tratamento e hoje sou curada. O pior não foi a doença, foi o julgamento das pessoas.
+                <br><strong>- Maria, 28 anos</strong>
+            </div>
+            <div class="depoimento">
+                <i class="fas fa-quote-left"></i> Fiz o teste rápido na UBS, deu positivo. Em 3 semanas estava curado. Não tenha medo!
+                <br><strong>- Carlos, 34 anos</strong>
+            </div>
+            <div class="texto" style="text-align: center; margin-top: 1rem;">
+                <i class="fas fa-comments"></i> Falar sobre ISTs quebra o preconceito e salva vidas!
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 21 - CAMPANHAS -->
+    <div class="slide" id="slide21">
+        <div class="slide-content">
+            <h2>📢 Campanhas de Conscientização</h2>
+            <div class="cards-grid">
+                <div class="card"><div class="card-icon">🔴</div><h4>Dezembro Vermelho</h4></div>
+                <div class="card"><div class="card-icon">💡</div><h4>Fique Sabendo</h4></div>
+                <div class="card"><div class="card-icon">🏥</div><h4>Dia D de testagem</h4></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 22 - POLÍTICAS PÚBLICAS -->
+    <div class="slide" id="slide22">
+        <div class="slide-content">
+            <h2>🏛️ O que o SUS oferece?</h2>
+            <div class="prevencao-lista">
+                <div class="prevencao-item"><i class="fas fa-flask"></i><span>Testes rápidos gratuitos</span></div>
+                <div class="prevencao-item"><i class="fas fa-syringe"></i><span>Penicilina (tratamento completo)</span></div>
+                <div class="prevencao-item"><i class="fas fa-baby-carriage"></i><span>Pré-natal com testes</span></div>
+                <div class="prevencao-item"><i class="fas fa-condom"></i><span>Preservativos gratuitos</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 23 - EDUCAÇÃO SEXUAL NAS ESCOLAS (NOVO) -->
+    <div class="slide" id="slide23">
+        <div class="slide-content">
+            <h2>📚 Educação Sexual nas Escolas</h2>
+            <div class="texto">
+                <p><i class="fas fa-graduation-cap"></i> Falar sobre ISTs desde cedo é essencial!</p>
+                <p><i class="fas fa-chart-line"></i> Jovens de 15-24 anos representam 50% das novas ISTs no mundo</p>
+                <p><i class="fas fa-lightbulb"></i> Informação correta na escola previne casos e salva vidas</p>
+            </div>
+            <div style="background: rgba(244,162,97,0.1); border-radius: 1rem; padding: 1rem; margin-top: 1rem; text-align: center;">
+                <i class="fas fa-heart" style="color: #f4a261;"></i> Educação sexual não incentiva a prática sexual precoce, previne riscos!
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 24 - GLOSSÁRIO (NOVO) -->
+    <div class="slide" id="slide24">
+        <div class="slide-content">
+            <h2>📖 Glossário de Termos</h2>
+            <div class="glossario-item"><div class="glossario-termo">Cancro</div><div>Ferida indolor característica da sífilis primária</div></div>
+            <div class="glossario-item"><div class="glossario-termo">Treponema</div><div>Bactéria causadora da sífilis</div></div>
+            <div class="glossario-item"><div class="glossario-termo">VDRL</div><div>Exame de sangue para detectar sífilis</div></div>
+            <div class="glossario-item"><div class="glossario-termo">Penicilina</div><div>Medicamento que cura a sífilis</div></div>
+            <div class="glossario-item"><div class="glossario-termo">Neurossífilis</div><div>Complicação que afeta o sistema nervoso</div></div>
+        </div>
+    </div>
+
+    <!-- SLIDE 25 - FAQ -->
+    <div class="slide" id="slide25">
+        <div class="slide-content">
+            <h2>❓ Perguntas Frequentes</h2>
+            <div class="faq-item"><div class="faq-pergunta">Posso pegar sífilis por beijo?</div><div class="faq-resposta">Sim, se houver feridas na boca da pessoa infectada.</div></div>
+            <div class="faq-item"><div class="faq-pergunta">Quanto tempo dura o tratamento?</div><div class="faq-resposta">De 1 a 3 semanas, dependendo do estágio.</div></div>
+            <div class="faq-item"><div class="faq-pergunta">Preciso contar para meu parceiro?</div><div class="faq-resposta">Sim! É essencial para evitar reinfecção.</div></div>
+            <div class="faq-item"><div class="faq-pergunta">O teste rápido dói?</div><div class="faq-resposta">Não! Apenas uma gotinha do dedo.</div></div>
+        </div>
+    </div>
+
+    <!-- SLIDE 26 - DIREITOS DO PACIENTE (NOVO) -->
+    <div class="slide" id="slide26">
+        <div class="slide-content">
+            <h2>⚖️ Direitos do Paciente</h2>
+            <div class="prevencao-lista">
+                <div class="prevencao-item"><i class="fas fa-lock"></i><span>Sigilo médico garantido por lei</span></div>
+                <div class="prevencao-item"><i class="fas fa-gratipay"></i><span>Tratamento 100% gratuito pelo SUS</span></div>
+                <div class="prevencao-item"><i class="fas fa-file-alt"></i><span>Acesso ao prontuário</span></div>
+                <div class="prevencao-item"><i class="fas fa-hand-holding-heart"></i><span>Atendimento humanizado</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 27 - APOIO PSICOLÓGICO (NOVO) -->
+    <div class="slide" id="slide27">
+        <div class="slide-content">
+            <h2>🧠 Apoio Psicológico</h2>
+            <div class="texto">
+                <p><i class="fas fa-heart"></i> Receber um diagnóstico positivo pode ser assustador.</p>
+                <p><i class="fas fa-users"></i> O SUS oferece acompanhamento psicológico gratuito.</p>
+                <p><i class="fas fa-phone-alt"></i> Disque Saúde 136 - Atendimento 24h</p>
+                <p><i class="fas fa-comment-dots"></i> CVV (Centro de Valorização da Vida): 188</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 28 - QUIZ -->
+    <div class="slide" id="slide28">
+        <div class="slide-content">
+            <h2>🎮 Quiz: O que você aprendeu?</h2>
+            <div class="quiz-container"><div class="quiz-pergunta">1️⃣ A sífilis é causada por:</div>
+            <div class="quiz-opcao" data-quiz="1" data-resp="c">a) Vírus HIV</div>
+            <div class="quiz-opcao" data-quiz="1" data-resp="c">b) Fungo Candida</div>
+            <div class="quiz-opcao" data-quiz="1" data-resp="correta">c) Bactéria Treponema pallidum</div>
+            <div class="quiz-resposta" id="respostaQuiz1"></div></div>
+
+            <div class="quiz-container"><div class="quiz-pergunta">2️⃣ A sífilis tem cura?</div>
+            <div class="quiz-opcao" data-quiz="2" data-resp="c">a) Não</div>
+            <div class="quiz-opcao" data-quiz="2" data-resp="c">b) Só com cirurgia</div>
+            <div class="quiz-opcao" data-quiz="2" data-resp="correta">c) Sim, com penicilina</div>
+            <div class="quiz-resposta" id="respostaQuiz2"></div></div>
+
+            <div class="quiz-container"><div class="quiz-pergunta">3️⃣ Qual a principal prevenção?</div>
+            <div class="quiz-opcao" data-quiz="3" data-resp="c">a) Vacina</div>
+            <div class="quiz-opcao" data-quiz="3" data-resp="c">b) Remédio diário</div>
+            <div class="quiz-opcao" data-quiz="3" data-resp="correta">c) Uso de camisinha</div>
+            <div class="quiz-resposta" id="respostaQuiz3"></div></div>
+        </div>
+    </div>
+
+    <!-- SLIDE 29 - FONTES -->
+    <div class="slide" id="slide29">
+        <div class="slide-content">
+            <h2>📚 Fontes Bibliográficas</h2>
+            <div class="fonte-item">📖 Ministério da Saúde - Boletim Epidemiológico Sífilis 2024</div>
+            <div class="fonte-item">📖 Organização Mundial da Saúde (OMS)</div>
+            <div class="fonte-item">📖 Organização Pan-Americana da Saúde (OPAS)</div>
+            <div class="fonte-item">📖 Sociedade Brasileira de Infectologia</div>
+            <div class="fonte-item">📖 CDC - Centers for Disease Control</div>
+            <div class="fonte-item">📖 SciELO - Artigos científicos</div>
+        </div>
+    </div>
+
+    <!-- SLIDE 30 - FINAL -->
+    <div class="slide" id="slide30">
+        <div class="slide-content" style="text-align: center;">
+            <h2>💙 Informação salva vidas!</h2>
+            <div class="stats">
+                <div class="stat"><div class="numero">Previna-se</div><div class="label">Use camisinha sempre</div></div>
+                <div class="stat"><div class="numero">Teste-se</div><div class="label">Faça exames regularmente</div></div>
+                <div class="stat"><div class="numero">Trate-se</div><div class="label">Tratamento gratuito</div></div>
+            </div>
+            <button class="btn-pdf" onclick="window.print()"><i class="fas fa-print"></i> Salvar como PDF</button>
+            <p class="subtitle" style="margin-top: 1.5rem;">Trabalho escolar - Conscientização sobre Sífilis</p>
+        </div>
+    </div>
+</div>
+
+<div class="nav">
+    <button id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+    <button id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+</div>
+<div class="indicadores" id="indicadores"></div>
+<div class="counter" id="counter">1 / 30</div>
+
+<script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    const total = slides.length;
+
+    const indicatorsDiv = document.getElementById('indicadores');
+    for (let i = 0; i < total; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        dot.dataset.index = i;
+        dot.addEventListener('click', () => goToSlide(i));
+        indicatorsDiv.appendChild(dot);
+    }
+    const dots = document.querySelectorAll('.dot');
+
+    function goToSlide(index) {
+        if (index < 0) index = 0;
+        if (index >= total) index = total - 1;
+        current = index;
+        slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
+        document.getElementById('counter').innerText = `${current+1} / ${total}`;
+    }
+
+    function next() { goToSlide(current + 1); }
+    function prev() { goToSlide(current - 1); }
+
+    document.getElementById('nextBtn').addEventListener('click', next);
+    document.getElementById('prevBtn').addEventListener('click', prev);
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') next();
+        if (e.key === 'ArrowLeft') prev();
+    });
+
+    // QUIZ
+    const respostasCorretas = {
+        1: "c) Bactéria Treponema pallidum",
+        2: "c) Sim, com penicilina",
+        3: "c) Uso de camisinha"
+    };
+
+    for (let i = 1; i <= 3; i++) {
+        const opcoes = document.querySelectorAll(`[data-quiz="${i}"]`);
+        const respostaDiv = document.getElementById(`respostaQuiz${i}`);
+        if (opcoes.length > 0) {
+            opcoes.forEach(opcao => {
+                opcao.addEventListener('click', function() {
+                    const isCorreta = this.dataset.resp === 'correta';
+                    if (isCorreta) {
+                        respostaDiv.innerHTML = `✅ CORRETO! ${respostasCorretas[i]}`;
+                        respostaDiv.className = 'quiz-resposta correto';
+                    } else {
+                        respostaDiv.innerHTML = `❌ INCORRETO! A resposta correta é: ${respostasCorretas[i]}`;
+                        respostaDiv.className = 'quiz-resposta errado';
+                    }
+                });
+            });
+        }
+    }
+
+    goToSlide(0);
+</script>
+</body>
+</html>
