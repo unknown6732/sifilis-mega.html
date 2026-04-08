@@ -111,6 +111,10 @@
             background: rgba(244, 162, 97, 0.1);
         }
 
+        body.light .credito {
+            color: #888;
+        }
+
         .presentation {
             width: 100%;
             height: 100vh;
@@ -240,6 +244,14 @@
             font-weight: 800;
         }
 
+        /* CRÉDITO NA TELA INICIAL */
+        .credito {
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            opacity: 0.6;
+            text-align: center;
+        }
+
         /* BARRA DE PROGRESSO */
         .progress-bar {
             position: fixed;
@@ -365,7 +377,6 @@
             font-size: 0.85rem;
         }
 
-        /* Modo escuro/claro botão específico */
         .theme-btn {
             background: #f4a261 !important;
         }
@@ -379,6 +390,7 @@
             .controls-bar button { width: 35px; height: 35px; font-size: 1rem; }
             .dot { width: 20px; }
             .dot.active { width: 35px; }
+            .credito { font-size: 0.7rem; }
         }
     </style>
 </head>
@@ -398,7 +410,7 @@
     </div>
 
     <div class="presentation">
-        <!-- SLIDE 1 - CAPA -->
+        <!-- SLIDE 1 - CAPA COM CRÉDITO -->
         <div class="slide active" id="slide1">
             <div class="slide-content" style="text-align: center;">
                 <i class="fas fa-bacterium" style="font-size: 4rem; color: #f4a261;"></i>
@@ -408,6 +420,10 @@
                     <div class="stat"><i class="fas fa-globe"></i><div class="numero">8M+</div><div>casos/ano</div></div>
                     <div class="stat"><i class="fas fa-heartbeat"></i><div class="numero">100%</div><div>curável</div></div>
                     <div class="stat"><i class="fas fa-syringe"></i><div class="numero">Gratuito</div><div>SUS</div></div>
+                </div>
+                <!-- CRÉDITO ADICIONADO AQUI -->
+                <div class="credito">
+                    <i class="fas fa-code"></i> Site feito por: unknown
                 </div>
                 <p style="margin-top: 1rem; opacity: 0.7;"><i class="fas fa-arrow-left"></i> <i class="fas fa-arrow-right"></i> Toque na tela ou use as setas</p>
             </div>
