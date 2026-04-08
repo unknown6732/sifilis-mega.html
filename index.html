@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Sífilis - Apresentação Super Completa | Trabalho Escolar</title>
+    <title>Sífilis - Apresentação Completa | Trabalho Escolar</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -30,7 +30,7 @@
         }
 
         body.dark .slide-content {
-            background: rgba(13, 27, 42, 0.9);
+            background: rgba(13, 27, 42, 0.95);
             border: 1px solid rgba(244, 162, 97, 0.2);
         }
 
@@ -40,6 +40,11 @@
 
         body.dark .stat {
             background: rgba(244, 162, 97, 0.15);
+        }
+
+        body.dark .dropdown-menu {
+            background: #1a1a2e;
+            border: 1px solid rgba(244, 162, 97, 0.3);
         }
 
         /* MODO CLARO */
@@ -65,18 +70,19 @@
             background: rgba(244, 162, 97, 0.2);
         }
 
-        body.light .credito {
-            color: #888;
+        body.light .dropdown-menu {
+            background: white;
+            border: 1px solid #ddd;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .presentation {
             width: 100%;
             height: 100vh;
             position: relative;
-            transition: background 0.3s ease;
         }
 
-        /* ANIMAÇÃO ENTRE SLIDES */
+        /* SLIDES */
         .slide {
             position: absolute;
             top: 0;
@@ -85,12 +91,12 @@
             height: 100%;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.6s ease, transform 0.6s ease, visibility 0.6s;
+            transition: opacity 0.5s ease, transform 0.5s ease;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow-y: auto;
-            transform: scale(0.95);
+            transform: scale(0.98);
         }
 
         .slide.active {
@@ -99,51 +105,25 @@
             transform: scale(1);
         }
 
-        /* BACKGROUND DIFERENTE POR SLIDE */
-        .slide[data-bg="1"] .slide-content { background: linear-gradient(135deg, rgba(13,27,42,0.95), rgba(13,27,42,0.85)); }
-        .slide[data-bg="2"] .slide-content { background: linear-gradient(135deg, rgba(20,30,45,0.95), rgba(20,30,45,0.85)); }
-        .slide[data-bg="3"] .slide-content { background: linear-gradient(135deg, rgba(25,35,50,0.95), rgba(25,35,50,0.85)); }
-        .slide[data-bg="4"] .slide-content { background: linear-gradient(135deg, rgba(30,40,55,0.95), rgba(30,40,55,0.85)); }
-        .slide[data-bg="5"] .slide-content { background: linear-gradient(135deg, rgba(13,27,42,0.95), rgba(20,40,60,0.85)); }
-        
-        body.light .slide[data-bg="1"] .slide-content { background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(245,245,245,0.95)); }
-        body.light .slide[data-bg="2"] .slide-content { background: linear-gradient(135deg, rgba(250,250,250,0.98), rgba(240,240,240,0.95)); }
-        body.light .slide[data-bg="3"] .slide-content { background: linear-gradient(135deg, rgba(248,248,248,0.98), rgba(238,238,238,0.95)); }
-        body.light .slide[data-bg="4"] .slide-content { background: linear-gradient(135deg, rgba(245,245,245,0.98), rgba(235,235,235,0.95)); }
-        body.light .slide[data-bg="5"] .slide-content { background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(248,248,248,0.95)); }
-
         .slide-content {
-            max-width: 1200px;
-            width: 88%;
+            max-width: 1100px;
+            width: 85%;
             margin: 0 auto;
             padding: 2rem;
             backdrop-filter: blur(12px);
-            border-radius: 2rem;
-            animation: fadeInUp 0.5s ease;
+            border-radius: 1.5rem;
+            animation: fadeInUp 0.4s ease;
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-        }
-
+        /* TIPOGRAFIA */
         h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
+            font-size: 2.8rem;
+            font-weight: 800;
             background: linear-gradient(135deg, #f4a261, #e76f51);
             -webkit-background-clip: text;
             background-clip: text;
@@ -152,202 +132,236 @@
         }
 
         h2 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: #f4a261;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             border-left: 4px solid #e76f51;
             padding-left: 15px;
         }
 
         .texto {
             font-size: 1rem;
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
+        /* CARDS */
         .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
             margin-top: 1rem;
         }
 
         .card {
             border-radius: 1rem;
-            padding: 1.2rem;
+            padding: 1rem;
             text-align: center;
+            transition: transform 0.2s;
         }
 
-        .card h4 {
-            font-size: 1.2rem;
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-img {
+            font-size: 2rem;
             margin-bottom: 0.5rem;
         }
 
+        .card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .card p {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* ESTATÍSTICAS */
         .stats {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
+            gap: 1rem;
             flex-wrap: wrap;
             margin: 1.5rem 0;
         }
 
         .stat {
             border-radius: 1rem;
-            padding: 1rem;
+            padding: 0.8rem;
             text-align: center;
-            min-width: 130px;
+            min-width: 100px;
         }
 
         .stat .numero {
-            font-size: 1.5rem;
-            font-weight: 800;
+            font-size: 1.3rem;
+            font-weight: 700;
         }
 
-        .credito {
-            margin-top: 2rem;
-            font-size: 0.85rem;
-            opacity: 0.6;
-            text-align: center;
-        }
-
-        /* DICA DO DIA */
-        .dica-dia {
-            position: fixed;
-            bottom: 100px;
-            left: 20px;
-            background: rgba(244,162,97,0.2);
-            backdrop-filter: blur(8px);
-            padding: 8px 15px;
-            border-radius: 30px;
-            font-size: 0.75rem;
-            max-width: 250px;
-            z-index: 100;
-            border-left: 3px solid #f4a261;
-        }
-
-        /* BARRA DE PROGRESSO */
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: rgba(255,255,255,0.2);
-            z-index: 200;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #f4a261, #e76f51);
-            width: 0%;
-            transition: width 0.3s ease;
-        }
-
-        /* MENU SUPERIOR */
-        .controls-bar {
-            position: fixed;
-            top: 15px;
-            left: 50%;
-            transform: translateX(-50%);
+        /* NUVEM DE PALAVRAS */
+        .wordcloud {
             display: flex;
-            gap: 0.8rem;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(8px);
-            padding: 8px 16px;
-            border-radius: 50px;
-            z-index: 150;
             flex-wrap: wrap;
             justify-content: center;
+            gap: 0.8rem;
+            margin: 1rem 0;
+            padding: 0.8rem;
+            background: rgba(244,162,97,0.08);
+            border-radius: 1.5rem;
         }
 
-        .controls-bar button {
-            background: rgba(244,162,97,0.8);
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+        .wordcloud span {
+            display: inline-block;
             cursor: pointer;
-            font-size: 1.1rem;
             transition: 0.2s;
         }
 
-        .controls-bar button:hover {
+        .wordcloud span:hover {
+            transform: scale(1.1);
+            color: #f4a261;
+        }
+
+        /* MENU DROPDOWN (BOTÕES ORGANIZADOS) */
+        .menu-container {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 200;
+        }
+
+        .menu-btn {
+            background: rgba(244,162,97,0.9);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.3rem;
+            transition: 0.2s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .menu-btn:hover {
             background: #f4a261;
             transform: scale(1.05);
         }
 
-        .font-controls {
-            display: flex;
-            gap: 0.5rem;
-            padding-left: 0.5rem;
-            border-left: 1px solid rgba(255,255,255,0.3);
-        }
-
-        /* DATA E HORA */
-        .datetime {
-            position: fixed;
-            top: 15px;
-            left: 15px;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(8px);
-            padding: 8px 15px;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            z-index: 150;
-            font-family: monospace;
-        }
-
-        /* SLIDES RESTANTES */
-        .slides-left {
-            position: fixed;
-            bottom: 90px;
-            left: 20px;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(8px);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            z-index: 100;
-        }
-
-        .nav {
-            position: fixed;
-            bottom: 25px;
-            left: 0;
+        .dropdown-menu {
+            position: absolute;
+            top: 55px;
             right: 0;
+            background: #1a1a2e;
+            border-radius: 1rem;
+            padding: 0.8rem;
+            display: none;
+            flex-direction: column;
+            gap: 0.5rem;
+            min-width: 180px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            z-index: 200;
+        }
+
+        .dropdown-menu.show {
             display: flex;
-            justify-content: center;
+        }
+
+        .dropdown-menu button {
+            background: rgba(244,162,97,0.2);
+            border: none;
+            padding: 8px 12px;
+            border-radius: 0.8rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+            text-align: left;
+            transition: 0.2s;
+            color: inherit;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dropdown-menu button:hover {
+            background: rgba(244,162,97,0.5);
+            transform: translateX(5px);
+        }
+
+        /* INFORMAÇÕES NA TELA */
+        .info-bar {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
             gap: 1rem;
             z-index: 100;
         }
 
-        .nav button {
-            background: rgba(244, 162, 97, 0.9);
+        .info-item {
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+        }
+
+        .curiosidade {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(8px);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            max-width: 220px;
+            text-align: center;
+            z-index: 100;
+        }
+
+        /* NAVEGAÇÃO PRINCIPAL */
+        .nav-main {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+            z-index: 100;
+        }
+
+        .nav-main button {
+            background: rgba(244,162,97,0.9);
             border: none;
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             cursor: pointer;
+            transition: 0.2s;
         }
 
+        .nav-main button:hover {
+            transform: scale(1.05);
+        }
+
+        /* INDICADORES */
         .indicadores {
             position: fixed;
-            bottom: 25px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 0.5rem;
+            gap: 0.4rem;
             z-index: 99;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.4);
             backdrop-filter: blur(8px);
-            padding: 0.4rem 1rem;
+            padding: 0.3rem 0.8rem;
             border-radius: 2rem;
         }
 
         .dot {
-            width: 30px;
-            height: 4px;
+            width: 25px;
+            height: 3px;
             background: rgba(255,255,255,0.3);
             border-radius: 2px;
             cursor: pointer;
@@ -355,20 +369,7 @@
 
         .dot.active {
             background: #f4a261;
-            width: 50px;
-        }
-
-        .counter {
-            position: fixed;
-            bottom: 90px;
-            right: 20px;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(8px);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-weight: bold;
-            z-index: 100;
-            font-size: 0.85rem;
+            width: 40px;
         }
 
         /* MODAL */
@@ -387,17 +388,15 @@
 
         .modal-content {
             background: #1a1a2e;
-            border-radius: 1.5rem;
-            padding: 2rem;
-            max-width: 500px;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            max-width: 400px;
             width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
+            text-align: center;
         }
 
         body.light .modal-content {
             background: white;
-            color: #333;
         }
 
         .close-modal {
@@ -409,84 +408,117 @@
             margin-top: 1rem;
         }
 
-        /* CONFETES */
-        .confetti {
+        /* LOADING */
+        .loading-overlay {
             position: fixed;
-            width: 10px;
-            height: 10px;
-            background: #f4a261;
-            position: absolute;
-            animation: fall 3s linear forwards;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
             z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
         }
 
-        @keyframes fall {
-            to {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #f4a261;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
         }
 
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* RESPONSIVO */
         @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            h2 { font-size: 1.3rem; }
-            .slide-content { padding: 1rem; width: 95%; }
-            .controls-bar button { width: 35px; height: 35px; font-size: 0.9rem; }
-            .datetime { font-size: 0.65rem; top: 10px; left: 10px; }
-            .dica-dia { font-size: 0.65rem; max-width: 180px; bottom: 95px; }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.2rem; }
+            .slide-content { padding: 1rem; width: 92%; }
+            .nav-main button { width: 45px; height: 45px; font-size: 1rem; }
+            .menu-btn { width: 40px; height: 40px; font-size: 1.1rem; }
+            .curiosidade { font-size: 0.6rem; max-width: 170px; bottom: 80px; }
+            .info-item { font-size: 0.6rem; }
         }
     </style>
 </head>
 <body class="dark">
-    <div class="progress-bar">
-        <div class="progress-fill" id="progressFill"></div>
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+        <p style="color: #f4a261; margin-top: 0.8rem;">Carregando...</p>
     </div>
 
-    <div class="datetime" id="datetime"></div>
-    <div class="slides-left" id="slidesLeft"></div>
-    <div class="dica-dia" id="dicaDia">💡 Dica: Use camisinha em todas as relações!</div>
-
-    <div class="controls-bar">
-        <button id="homeBtn" title="Início"><i class="fas fa-home"></i></button>
-        <button id="endBtn" title="Fim"><i class="fas fa-flag-checkered"></i></button>
-        <button id="fullscreenBtn" title="Tela Cheia"><i class="fas fa-expand"></i></button>
-        <div class="font-controls">
-            <button id="fontMinus" title="Diminuir letra">A-</button>
-            <button id="fontPlus" title="Aumentar letra">A+</button>
+    <!-- MENU DROPDOWN (TODOS OS BOTÕES ORGANIZADOS) -->
+    <div class="menu-container">
+        <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+        <div class="dropdown-menu" id="dropdownMenu">
+            <button id="homeBtn"><i class="fas fa-home"></i> Início</button>
+            <button id="endBtn"><i class="fas fa-flag-checkered"></i> Fim</button>
+            <button id="restartBtn"><i class="fas fa-undo-alt"></i> Reiniciar</button>
+            <button id="fullscreenBtn"><i class="fas fa-expand"></i> Tela Cheia</button>
+            <button id="fontPlus"><i class="fas fa-plus-circle"></i> Aumentar Fonte</button>
+            <button id="fontMinus"><i class="fas fa-minus-circle"></i> Diminuir Fonte</button>
+            <button id="themeBtn"><i class="fas fa-moon"></i> Modo Claro/Escuro</button>
+            <button id="shareBtn"><i class="fab fa-whatsapp"></i> Compartilhar</button>
+            <button id="speakBtn"><i class="fas fa-volume-up"></i> Ler Texto</button>
+            <button id="reportBtn"><i class="fas fa-chart-simple"></i> Relatório</button>
         </div>
-        <button id="themeBtn" class="theme-btn" title="Modo Claro/Escuro"><i class="fas fa-moon"></i></button>
-        <button id="speakBtn" title="Ler texto em voz alta"><i class="fas fa-volume-up"></i></button>
-        <button id="reportBtn" title="Relatório"><i class="fas fa-chart-simple"></i></button>
     </div>
 
+    <!-- INFORMAÇÕES NA TELA -->
+    <div class="info-bar">
+        <div class="info-item" id="datetime"></div>
+        <div class="info-item" id="counter">1 / 8</div>
+        <div class="info-item" id="quizAcertos">🏆 0/5</div>
+    </div>
+    <div class="curiosidade" id="curiosidade">💡 A sífilis tem cura com penicilina desde 1943</div>
+
+    <!-- MODAL RELATÓRIO -->
     <div id="reportModal" class="modal">
         <div class="modal-content">
-            <h3><i class="fas fa-chart-simple"></i> Relatório da Apresentação</h3>
+            <h3><i class="fas fa-chart-simple"></i> Relatório</h3>
             <div id="reportContent"></div>
             <button class="close-modal" onclick="closeReport()">Fechar</button>
         </div>
     </div>
 
+    <!-- SLIDES -->
     <div class="presentation">
         <!-- SLIDE 1 - CAPA -->
-        <div class="slide active" data-bg="1" id="slide1">
+        <div class="slide active" id="slide1">
             <div class="slide-content" style="text-align: center;">
-                <i class="fas fa-bacterium" style="font-size: 4rem; color: #f4a261;"></i>
+                <i class="fas fa-bacterium" style="font-size: 3rem; color: #f4a261;"></i>
                 <h1>🦠 SÍFILIS</h1>
-                <p style="margin-bottom: 1.5rem; opacity: 0.8;">Informação • Prevenção • Cura</p>
+                <p style="margin: 0.5rem 0; opacity: 0.8;">Informação • Prevenção • Cura</p>
+                
+                <div class="wordcloud">
+                    <span style="font-size: 1.6rem;">🦠</span>
+                    <span style="font-size: 1.3rem;">PREVENÇÃO</span>
+                    <span style="font-size: 1.1rem;">CURA</span>
+                    <span style="font-size: 1.5rem;">CAMISINHA</span>
+                    <span style="font-size: 1rem;">SAÚDE</span>
+                    <span style="font-size: 1.4rem;">IST</span>
+                    <span style="font-size: 1.2rem;">SUS</span>
+                    <span style="font-size: 1.6rem;">💙</span>
+                </div>
+
                 <div class="stats">
                     <div class="stat"><i class="fas fa-globe"></i><div class="numero">8M+</div><div>casos/ano</div></div>
                     <div class="stat"><i class="fas fa-heartbeat"></i><div class="numero">100%</div><div>curável</div></div>
                     <div class="stat"><i class="fas fa-syringe"></i><div class="numero">Gratuito</div><div>SUS</div></div>
                 </div>
-                <div class="credito">
-                    <i class="fas fa-code"></i> Site feito por: unknown
-                </div>
+                <div style="font-size: 0.7rem; opacity: 0.5; margin-top: 1rem;">Site feito por: unknown</div>
             </div>
         </div>
 
         <!-- SLIDE 2 - O QUE É -->
-        <div class="slide" data-bg="2" id="slide2">
+        <div class="slide" id="slide2">
             <div class="slide-content">
                 <h2>🔬 O que é Sífilis?</h2>
                 <div class="texto">
@@ -498,46 +530,46 @@
         </div>
 
         <!-- SLIDE 3 - ESTÁGIOS -->
-        <div class="slide" data-bg="3" id="slide3">
+        <div class="slide" id="slide3">
             <div class="slide-content">
                 <h2>📊 Estágios da Infecção</h2>
                 <div class="cards-grid">
-                    <div class="card"><div class="card-icon">🔴</div><h4>Primário</h4><p>Ferida indolor (cancro)</p></div>
-                    <div class="card"><div class="card-icon">🟠</div><h4>Secundário</h4><p>Manchas pelo corpo</p></div>
-                    <div class="card"><div class="card-icon">🟡</div><h4>Latente</h4><p>Sem sintomas</p></div>
-                    <div class="card"><div class="card-icon">🔴⚡</div><h4>Terciário</h4><p>Danos neurológicos</p></div>
+                    <div class="card"><div class="card-img">🔴</div><h4>Primário</h4><p>Ferida indolor (cancro)</p></div>
+                    <div class="card"><div class="card-img">🟠</div><h4>Secundário</h4><p>Manchas pelo corpo</p></div>
+                    <div class="card"><div class="card-img">🟡</div><h4>Latente</h4><p>Sem sintomas</p></div>
+                    <div class="card"><div class="card-img">🔴⚡</div><h4>Terciário</h4><p>Danos neurológicos</p></div>
                 </div>
             </div>
         </div>
 
         <!-- SLIDE 4 - TRANSMISSÃO -->
-        <div class="slide" data-bg="4" id="slide4">
+        <div class="slide" id="slide4">
             <div class="slide-content">
                 <h2>⚠️ Como se transmite?</h2>
-                <div class="texto">
-                    <p><i class="fas fa-venus-mars"></i> <strong>Relações sexuais</strong> sem preservativo</p>
-                    <p><i class="fas fa-baby"></i> <strong>Mãe para filho</strong> (sífilis congênita)</p>
-                    <p><i class="fas fa-syringe"></i> <strong>Compartilhamento de seringas</strong></p>
-                    <p><i class="fas fa-kiss"></i> <strong>Beijo</strong> (se houver feridas na boca)</p>
+                <div class="cards-grid">
+                    <div class="card"><div class="card-img">👫</div><h4>Relações sexuais</h4><p>Sem preservativo</p></div>
+                    <div class="card"><div class="card-img">👶</div><h4>Mãe para filho</h4><p>Sífilis congênita</p></div>
+                    <div class="card"><div class="card-img">💉</div><h4>Seringas</h4><p>Compartilhamento</p></div>
+                    <div class="card"><div class="card-img">💋</div><h4>Beijo</h4><p>Com feridas na boca</p></div>
                 </div>
             </div>
         </div>
 
         <!-- SLIDE 5 - PREVENÇÃO -->
-        <div class="slide" data-bg="5" id="slide5">
+        <div class="slide" id="slide5">
             <div class="slide-content">
                 <h2>🛡️ Prevenção</h2>
                 <div class="cards-grid">
-                    <div class="card"><i class="fas fa-condom" style="font-size: 2rem;"></i><h4>Camisinha</h4><p>Use em todas as relações</p></div>
-                    <div class="card"><i class="fas fa-flask" style="font-size: 2rem;"></i><h4>Testes</h4><p>Faça regularmente</p></div>
-                    <div class="card"><i class="fas fa-baby-carriage" style="font-size: 2rem;"></i><h4>Pré-natal</h4><p>Fundamental para gestantes</p></div>
-                    <div class="card"><i class="fas fa-comments" style="font-size: 2rem;"></i><h4>Diálogo</h4><p>Converse com parceiro(a)</p></div>
+                    <div class="card"><div class="card-img">🔴</div><h4>Camisinha</h4><p>Sempre!</p></div>
+                    <div class="card"><div class="card-img">🧪</div><h4>Testes</h4><p>Regularmente</p></div>
+                    <div class="card"><div class="card-img">🤰</div><h4>Pré-natal</h4><p>Fundamental</p></div>
+                    <div class="card"><div class="card-img">💬</div><h4>Diálogo</h4><p>Com parceiro</p></div>
                 </div>
             </div>
         </div>
 
         <!-- SLIDE 6 - TRATAMENTO -->
-        <div class="slide" data-bg="1" id="slide6">
+        <div class="slide" id="slide6">
             <div class="slide-content">
                 <h2>💉 Tratamento</h2>
                 <div class="texto">
@@ -549,198 +581,93 @@
             </div>
         </div>
 
-        <!-- SLIDE 7 - DADOS BRASIL -->
-        <div class="slide" data-bg="2" id="slide7">
+        <!-- SLIDE 7 - QUIZ -->
+        <div class="slide" id="slide7">
             <div class="slide-content">
-                <h2>📊 Sífilis no Brasil</h2>
-                <div class="stats">
-                    <div class="stat"><div class="numero">200 mil</div><div>casos/ano</div></div>
-                    <div class="stat"><div class="numero">+400%</div><div>aumento em 10 anos</div></div>
-                    <div class="stat"><div class="numero">8 mil</div><div>bebês afetados/ano</div></div>
+                <h2>🎮 Quiz</h2>
+                <div class="texto" id="quizContainer">
+                    <p><strong>1. A sífilis é causada por?</strong><br>
+                    <button class="quiz-btn" data-q="1" data-correct="c">a) Vírus</button>
+                    <button class="quiz-btn" data-q="1" data-correct="c">b) Fungo</button>
+                    <button class="quiz-btn" data-q="1" data-correct="correta">c) Bactéria</button>
+                    <span id="resp1" style="margin-left: 10px;"></span></p>
+                    
+                    <p><strong>2. A sífilis tem cura?</strong><br>
+                    <button class="quiz-btn" data-q="2" data-correct="c">a) Não</button>
+                    <button class="quiz-btn" data-q="2" data-correct="c">b) Só cirurgia</button>
+                    <button class="quiz-btn" data-q="2" data-correct="correta">c) Sim</button>
+                    <span id="resp2" style="margin-left: 10px;"></span></p>
+                    
+                    <p><strong>3. Qual a principal prevenção?</strong><br>
+                    <button class="quiz-btn" data-q="3" data-correct="c">a) Vacina</button>
+                    <button class="quiz-btn" data-q="3" data-correct="c">b) Remédio</button>
+                    <button class="quiz-btn" data-q="3" data-correct="correta">c) Camisinha</button>
+                    <span id="resp3" style="margin-left: 10px;"></span></p>
+                    
+                    <p><strong>4. Onde fazer teste gratuito?</strong><br>
+                    <button class="quiz-btn" data-q="4" data-correct="c">a) Farmácia</button>
+                    <button class="quiz-btn" data-q="4" data-correct="c">b) Particular</button>
+                    <button class="quiz-btn" data-q="4" data-correct="correta">c) UBS</button>
+                    <span id="resp4" style="margin-left: 10px;"></span></p>
+                    
+                    <p><strong>5. Sífilis congênita afeta?</strong><br>
+                    <button class="quiz-btn" data-q="5" data-correct="c">a) Adultos</button>
+                    <button class="quiz-btn" data-q="5" data-correct="c">b) Idosos</button>
+                    <button class="quiz-btn" data-q="5" data-correct="correta">c) Bebês</button>
+                    <span id="resp5" style="margin-left: 10px;"></span></p>
                 </div>
             </div>
         </div>
 
-        <!-- SLIDE 8 - MITOS E VERDADES -->
-        <div class="slide" data-bg="3" id="slide8">
-            <div class="slide-content">
-                <h2>🎭 Mitos e Verdades</h2>
-                <div class="texto">
-                    <p><span style="color: #e76f51;">❌</span> "Sífilis tem cheiro" → <span style="color: #2a9d8f;">Não tem cheiro</span></p>
-                    <p><span style="color: #e76f51;">❌</span> "Só pega quem tem muitos parceiros" → <span style="color: #2a9d8f;">Basta um contato</span></p>
-                    <p><span style="color: #e76f51;">❌</span> "Depois de curada, não pega de novo" → <span style="color: #2a9d8f;">Pode pegar novamente</span></p>
-                    <p><span style="color: #2a9d8f;">✅</span> "Camisinha previne" → <span style="color: #2a9d8f;">Verdade!</span></p>
-                    <p><span style="color: #2a9d8f;">✅</span> "Sífilis tem cura" → <span style="color: #2a9d8f;">Verdade!</span></p>
-                </div>
-            </div>
-        </div>
-
-        <!-- SLIDE 9 - SÍFILIS CONGÊNITA (NOVO) -->
-        <div class="slide" data-bg="4" id="slide9">
-            <div class="slide-content">
-                <h2>👶 Sífilis Congênita</h2>
-                <div class="texto">
-                    <p>A sífilis congênita ocorre quando a mãe com sífilis <strong>não tratada</strong> transmite a bactéria para o bebê durante a gestação.</p>
-                    <p><strong style="color: #e76f51;">Consequências graves:</strong></p>
-                    <p>• Aborto espontâneo</p>
-                    <p>• Morte ao nascer</p>
-                    <p>• Malformações ósseas</p>
-                    <p>• Surdez, cegueira ou deficiência mental</p>
-                    <p><strong style="color: #2a9d8f;">✅ Tratamento da gestante protege o bebê completamente!</strong></p>
-                </div>
-            </div>
-        </div>
-
-        <!-- SLIDE 10 - HISTÓRIA DA SÍFILIS (NOVO) -->
-        <div class="slide" data-bg="5" id="slide10">
-            <div class="slide-content">
-                <h2>📜 História da Sífilis</h2>
-                <div class="texto">
-                    <p><strong>1495</strong> - Primeira grande epidemia na Europa</p>
-                    <p><strong>1910</strong> - Salvarsan (primeiro tratamento)</p>
-                    <p><strong>1943</strong> - Penicilina se torna o tratamento padrão</p>
-                    <p><strong>Famosos que tiveram sífilis:</strong> Al Capone, Nietzsche, Van Gogh</p>
-                    <p><strong>Origem do nome:</strong> Poema "Syphilis sive morbus gallicus" (1530)</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- SLIDE 11 - TIPOS DE EXAMES (NOVO) -->
-        <div class="slide" data-bg="1" id="slide11">
-            <div class="slide-content">
-                <h2>🧪 Tipos de Exames</h2>
-                <div class="cards-grid">
-                    <div class="card"><div class="card-icon">⚡</div><h4>Teste Rápido</h4><p>Resultado em 15-30 min</p></div>
-                    <div class="card"><div class="card-icon">🩸</div><h4>VDRL</h4><p>Exame de sangue tradicional</p></div>
-                    <div class="card"><div class="card-icon">🔬</div><h4>FTA-ABS</h4><p>Exame confirmatório</p></div>
-                    <div class="card"><div class="card-icon">🧬</div><h4>PCR</h4><p>Detecta o DNA da bactéria</p></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- SLIDE 12 - PERGUNTAS FREQUENTES (NOVO) -->
-        <div class="slide" data-bg="2" id="slide12">
-            <div class="slide-content">
-                <h2>❓ Perguntas Frequentes</h2>
-                <div class="texto">
-                    <p><strong>❓ Posso pegar sífilis por beijo?</strong> → Sim, se houver feridas na boca</p>
-                    <p><strong>❓ Quanto tempo dura o tratamento?</strong> → De 1 a 3 semanas</p>
-                    <p><strong>❓ Preciso contar para meu parceiro?</strong> → Sim! Essencial para evitar reinfecção</p>
-                    <p><strong>❓ O teste rápido dói?</strong> → Não! Apenas uma gotinha do dedo</p>
-                    <p><strong>❓ Onde fazer o teste?</strong> → Em qualquer UBS gratuitamente</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- SLIDE 13 - DICAS DE PREVENÇÃO (NOVO) -->
-        <div class="slide" data-bg="3" id="slide13">
-            <div class="slide-content">
-                <h2>💪 Dicas Importantes</h2>
-                <div class="texto">
-                    <p><i class="fas fa-check-circle" style="color: #2a9d8f;"></i> Use camisinha em TODAS as relações</p>
-                    <p><i class="fas fa-check-circle" style="color: #2a9d8f;"></i> Faça testes regulares de IST</p>
-                    <p><i class="fas fa-check-circle" style="color: #2a9d8f;"></i> Mantenha diálogo aberto com seu parceiro</p>
-                    <p><i class="fas fa-check-circle" style="color: #2a9d8f;"></i> Gestantes: façam o pré-natal completo</p>
-                    <p><i class="fas fa-check-circle" style="color: #2a9d8f;"></i> Ao menor sinal, procure atendimento médico</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- SLIDE 14 - QUIZ -->
-        <div class="slide" data-bg="4" id="slide14">
-            <div class="slide-content">
-                <h2>🎮 Quiz: O que você aprendeu?</h2>
-                <div class="texto">
-                    <p><strong>1. A sífilis é causada por?</strong></p>
-                    <p>👉 Bactéria Treponema pallidum</p>
-                    <p><strong>2. A sífilis tem cura?</strong></p>
-                    <p>👉 Sim, com penicilina</p>
-                    <p><strong>3. Qual a principal prevenção?</strong></p>
-                    <p>👉 Uso de camisinha</p>
-                    <p><strong>4. O que pode acontecer na sífilis congênita?</strong></p>
-                    <p>👉 Malformações, surdez, cegueira</p>
-                    <p><strong>5. Onde fazer o teste gratuito?</strong></p>
-                    <p>👉 Unidade Básica de Saúde (UBS)</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- SLIDE 15 - FINAL COM PARABÉNS -->
-        <div class="slide" data-bg="5" id="slide15">
+        <!-- SLIDE 8 - FINAL -->
+        <div class="slide" id="slide8">
             <div class="slide-content" style="text-align: center;">
                 <h2>💙 Informação salva vidas!</h2>
                 <div class="stats">
                     <div class="stat"><div class="numero">Previna-se</div><div>Use camisinha</div></div>
-                    <div class="stat"><div class="numero">Teste-se</div><div>UBS mais próxima</div></div>
-                    <div class="stat"><div class="numero">Trate-se</div><div>Tratamento gratuito</div></div>
+                    <div class="stat"><div class="numero">Teste-se</div><div>UBS</div></div>
+                    <div class="stat"><div class="numero">Trate-se</div><div>Gratuito</div></div>
                 </div>
                 <p>Disque Saúde: 136</p>
-                <div id="parabensMsg" style="margin: 1rem 0; font-size: 1.2rem; color: #f4a261;"></div>
-                <button onclick="window.print()" style="margin-top: 1rem; background: #f4a261; border: none; padding: 10px 20px; border-radius: 30px; cursor: pointer;"><i class="fas fa-print"></i> Salvar como PDF</button>
+                <div id="parabensMsg" style="margin: 0.5rem 0; color: #f4a261;"></div>
+                <button onclick="window.print()" style="margin-top: 0.5rem; background: #f4a261; border: none; padding: 8px 20px; border-radius: 30px; cursor: pointer;">📄 Salvar PDF</button>
             </div>
         </div>
     </div>
 
-    <div class="nav">
+    <!-- NAVEGAÇÃO PRINCIPAL -->
+    <div class="nav-main">
         <button id="prevBtn"><i class="fas fa-chevron-left"></i></button>
         <button id="nextBtn"><i class="fas fa-chevron-right"></i></button>
     </div>
     <div class="indicadores" id="indicadores"></div>
-    <div class="counter" id="counter">1 / 15</div>
 
     <script>
         const slides = document.querySelectorAll('.slide');
         let current = 0;
         const total = slides.length;
         let currentFontSize = 16;
-        
-        // DICAS PARA CADA SLIDE
-        const dicas = [
-            "💡 Use camisinha em todas as relações sexuais!",
-            "💡 A sífilis tem cura, mas o diagnóstico precoce é fundamental!",
-            "💡 Os estágios da sífilis: Primário, Secundário, Latente e Terciário",
-            "💡 A transmissão ocorre mesmo sem sintomas aparentes!",
-            "💡 Camisinha é o método mais eficaz de prevenção!",
-            "💡 O tratamento é gratuito no SUS e 100% eficaz!",
-            "💡 Brasil tem +200 mil casos de sífilis por ano",
-            "💡 Sífilis não tem cheiro e pode afetar qualquer pessoa",
-            "💡 Gestantes: pré-natal previne a sífilis congênita!",
-            "💡 Al Capone e Van Gogh tiveram sífilis",
-            "💡 Teste rápido dá resultado em 15 minutos!",
-            "💡 Falar sobre ISTs quebra o preconceito!",
-            "💡 Informação é a melhor forma de prevenção!",
-            "💡 Compartilhe conhecimento sobre sífilis!",
-            "💡 Você é parte da solução contra a sífilis!"
+        let quizAcertos = 0;
+        let quizRespondidas = [false, false, false, false, false];
+
+        // CURIOSIDADES ROTATIVAS
+        const curiosidades = [
+            "💡 A sífilis tem cura com penicilina desde 1943",
+            "📜 O nome 'sífilis' vem de um poema de 1530",
+            "👤 Al Capone morreu por complicações da sífilis",
+            "🎨 Van Gogh possivelmente teve sífilis",
+            "🌍 Brasil tem +200 mil casos por ano",
+            "👶 Sífilis congênita pode causar cegueira no bebê",
+            "🔬 A bactéria Treponema pallidum é uma espiroqueta",
+            "💏 A transmissão ocorre mesmo sem sintomas",
+            "📈 Casos de sífilis aumentaram 400% no Brasil",
+            "🏥 O teste rápido fica pronto em 15 minutos"
         ];
-
-        // CONFETES
-        function showConfetti() {
-            for (let i = 0; i < 100; i++) {
-                const confetti = document.createElement('div');
-                confetti.classList.add('confetti');
-                confetti.style.left = Math.random() * 100 + '%';
-                confetti.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
-                confetti.style.width = Math.random() * 10 + 5 + 'px';
-                confetti.style.height = Math.random() * 10 + 5 + 'px';
-                confetti.style.animationDuration = Math.random() * 2 + 2 + 's';
-                document.body.appendChild(confetti);
-                setTimeout(() => confetti.remove(), 3000);
-            }
-        }
-
-        // ATUALIZAR DICA
-        function updateDica() {
-            document.getElementById('dicaDia').innerHTML = dicas[current] || "💡 Informação salva vidas!";
-        }
-
-        // SOM AO PASSAR SLIDE
-        function playSound() {
-            try {
-                const audio = new Audio('data:audio/wav;base64,U3RlYWx0aCBzb3VuZA==');
-                audio.volume = 0.2;
-                audio.play().catch(e => console.log('Som não suportado'));
-            } catch(e) {}
-        }
+        let curiosidadeIndex = 0;
+        setInterval(() => {
+            curiosidadeIndex = (curiosidadeIndex + 1) % curiosidades.length;
+            document.getElementById('curiosidade').innerHTML = curiosidades[curiosidadeIndex];
+        }, 7000);
 
         // DATA E HORA
         function updateDateTime() {
@@ -750,7 +677,7 @@
         setInterval(updateDateTime, 1000);
         updateDateTime();
 
-        // CRIAR INDICADORES
+        // INDICADORES
         const indicatorsDiv = document.getElementById('indicadores');
         for (let i = 0; i < total; i++) {
             const dot = document.createElement('div');
@@ -761,82 +688,108 @@
         }
         const dots = document.querySelectorAll('.dot');
 
-        function updateProgress() {
-            const progress = ((current + 1) / total) * 100;
-            document.getElementById('progressFill').style.width = progress + '%';
-            const remaining = total - (current + 1);
-            document.getElementById('slidesLeft').innerHTML = `📄 Faltam ${remaining} slide${remaining !== 1 ? 's' : ''}`;
+        function updateUI() {
+            document.getElementById('counter').innerHTML = `${current+1} / ${total}`;
+            dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
+        }
+
+        function showLoading() {
+            document.getElementById('loadingOverlay').style.display = 'flex';
+            setTimeout(() => {
+                document.getElementById('loadingOverlay').style.display = 'none';
+            }, 300);
         }
 
         function goToSlide(index) {
             if (index < 0) index = 0;
             if (index >= total) index = total - 1;
-            current = index;
-            slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
-            dots.forEach((dot, i) => dot.classList.toggle('active', i === current));
-            document.getElementById('counter').innerHTML = `${current+1} / ${total}`;
-            updateProgress();
-            updateDica();
-            playSound();
-            
-            // MENSAGEM DE PARABÉNS NO ÚLTIMO SLIDE
-            if (current === total - 1) {
-                document.getElementById('parabensMsg').innerHTML = '🎉 PARABÉNS! Você completou a apresentação! 🎉';
-                showConfetti();
-            } else {
-                document.getElementById('parabensMsg').innerHTML = '';
-            }
+            showLoading();
+            setTimeout(() => {
+                current = index;
+                slides.forEach((slide, i) => slide.classList.toggle('active', i === current));
+                updateUI();
+                if (current === total - 1) {
+                    document.getElementById('parabensMsg').innerHTML = '🎉 PARABÉNS! Você completou a apresentação! 🎉';
+                }
+            }, 200);
         }
 
         function next() { goToSlide(current + 1); }
         function prev() { goToSlide(current - 1); }
         function home() { goToSlide(0); }
         function end() { goToSlide(total - 1); }
+        function restart() { goToSlide(0); quizAcertos = 0; quizRespondidas = [false, false, false, false, false]; updateQuizDisplay(); }
+
+        // QUIZ
+        function updateQuizDisplay() {
+            document.getElementById('quizAcertos').innerHTML = `🏆 ${quizAcertos}/5`;
+        }
+
+        function checkAnswer(question, isCorrect, respId) {
+            if (quizRespondidas[question-1]) return;
+            quizRespondidas[question-1] = true;
+            const respSpan = document.getElementById(respId);
+            if (isCorrect) {
+                quizAcertos++;
+                respSpan.innerHTML = '✅ Correto!';
+                respSpan.style.color = '#2a9d8f';
+            } else {
+                respSpan.innerHTML = '❌ Errado!';
+                respSpan.style.color = '#e76f51';
+            }
+            updateQuizDisplay();
+        }
+
+        const quizBtns = document.querySelectorAll('.quiz-btn');
+        quizBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const q = parseInt(btn.dataset.q);
+                const isCorrect = btn.dataset.correct === 'correta';
+                const respId = `resp${q}`;
+                checkAnswer(q, isCorrect, respId);
+            });
+        });
 
         // TELA CHEIA
         function toggleFullscreen() {
             if (!document.fullscreenElement) {
                 document.documentElement.requestFullscreen();
-                document.getElementById('fullscreenBtn').innerHTML = '<i class="fas fa-compress"></i>';
             } else {
                 document.exitFullscreen();
-                document.getElementById('fullscreenBtn').innerHTML = '<i class="fas fa-expand"></i>';
             }
         }
-
-        document.addEventListener('fullscreenchange', () => {
-            if (document.fullscreenElement) {
-                document.getElementById('fullscreenBtn').innerHTML = '<i class="fas fa-compress"></i>';
-            } else {
-                document.getElementById('fullscreenBtn').innerHTML = '<i class="fas fa-expand"></i>';
-            }
-        });
 
         // FONTE
         function changeFontSize(delta) {
             currentFontSize += delta;
             if (currentFontSize < 12) currentFontSize = 12;
-            if (currentFontSize > 24) currentFontSize = 24;
+            if (currentFontSize > 22) currentFontSize = 22;
             document.querySelectorAll('.slide-content, .texto, p, h1, h2, .card p, .card h4, .stat .numero, .stat div').forEach(el => {
                 el.style.fontSize = currentFontSize + 'px';
             });
-            document.querySelectorAll('h1').forEach(el => el.style.fontSize = (currentFontSize * 2) + 'px');
+            document.querySelectorAll('h1').forEach(el => el.style.fontSize = (currentFontSize * 1.8) + 'px');
             document.querySelectorAll('h2').forEach(el => el.style.fontSize = (currentFontSize * 1.3) + 'px');
         }
 
-        // MODO ESCURO/CLARO
+        // MODO CLARO/ESCURO
         function toggleTheme() {
             const body = document.body;
             const themeBtn = document.getElementById('themeBtn');
             if (body.classList.contains('dark')) {
                 body.classList.remove('dark');
                 body.classList.add('light');
-                themeBtn.innerHTML = '<i class="fas fa-sun"></i>';
+                themeBtn.innerHTML = '<i class="fas fa-sun"></i> Modo Claro/Escuro';
             } else {
                 body.classList.remove('light');
                 body.classList.add('dark');
-                themeBtn.innerHTML = '<i class="fas fa-moon"></i>';
+                themeBtn.innerHTML = '<i class="fas fa-moon"></i> Modo Claro/Escuro';
             }
+        }
+
+        // COMPARTILHAR
+        function shareWhatsApp() {
+            const url = window.location.href;
+            window.open(`https://wa.me/?text=Confira esta apresentação sobre Sífilis: ${url}`, '_blank');
         }
 
         // FALA
@@ -855,30 +808,15 @@
         }
 
         // RELATÓRIO
-        let reportData = {
-            startTime: new Date(),
-            slidesViewed: [1],
-            themeChanges: 0,
-            fontChanges: 0
-        };
-
         function showReport() {
-            const endTime = new Date();
-            const duration = Math.round((endTime - reportData.startTime) / 1000);
-            const minutes = Math.floor(duration / 60);
-            const seconds = duration % 60;
-            
             const reportContent = document.getElementById('reportContent');
             reportContent.innerHTML = `
-                <p><strong>📅 Data:</strong> ${reportData.startTime.toLocaleDateString('pt-BR')}</p>
-                <p><strong>⏱️ Duração:</strong> ${minutes} minuto(s) e ${seconds} segundo(s)</p>
+                <p><strong>📅 Data:</strong> ${new Date().toLocaleDateString('pt-BR')}</p>
                 <p><strong>📄 Total de slides:</strong> ${total}</p>
-                <p><strong>👀 Slides visualizados:</strong> ${reportData.slidesViewed.sort((a,b)=>a-b).join(', ')}</p>
-                <p><strong>🎨 Mudanças de tema:</strong> ${reportData.themeChanges}</p>
-                <p><strong>🔤 Ajustes de fonte:</strong> ${reportData.fontChanges}</p>
-                <p><strong>✅ Status:</strong> Apresentação concluída com sucesso!</p>
+                <p><strong>🏆 Acertos no quiz:</strong> ${quizAcertos}/5</p>
+                <p><strong>✅ Status:</strong> Apresentação concluída!</p>
                 <hr>
-                <p style="font-size: 0.8rem;">Site feito por: unknown | Trabalho escolar sobre Sífilis</p>
+                <p style="font-size: 0.7rem;">Site feito por: unknown</p>
             `;
             document.getElementById('reportModal').style.display = 'flex';
         }
@@ -887,53 +825,50 @@
             document.getElementById('reportModal').style.display = 'none';
         }
 
-        // ATUALIZAR SLIDES VISTOS
-        function updateSlidesViewed() {
-            if (!reportData.slidesViewed.includes(current + 1)) {
-                reportData.slidesViewed.push(current + 1);
+        // MENU DROPDOWN
+        const menuBtn = document.getElementById('menuBtn');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        menuBtn.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('show');
+        });
+        document.addEventListener('click', (e) => {
+            if (!menuBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.classList.remove('show');
             }
-        }
-
-        const originalGoToSlide = goToSlide;
-        window.goToSlide = function(index) {
-            originalGoToSlide(index);
-            updateSlidesViewed();
-        };
+        });
 
         // TOQUE NA TELA
         let touchStartX = 0;
-        let touchEndX = 0;
-        document.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
+        document.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; });
         document.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            if (touchEndX < touchStartX - 50) next();
-            if (touchEndX > touchStartX + 50) prev();
+            const diff = e.changedTouches[0].screenX - touchStartX;
+            if (diff < -40) next();
+            if (diff > 40) prev();
         });
 
-        // EVENTOS
-        document.getElementById('nextBtn').addEventListener('click', () => { next(); updateSlidesViewed(); });
-        document.getElementById('prevBtn').addEventListener('click', () => { prev(); updateSlidesViewed(); });
-        document.getElementById('homeBtn').addEventListener('click', () => { home(); updateSlidesViewed(); });
-        document.getElementById('endBtn').addEventListener('click', () => { end(); updateSlidesViewed(); });
+        // EVENTOS DOS BOTÕES
+        document.getElementById('nextBtn').addEventListener('click', next);
+        document.getElementById('prevBtn').addEventListener('click', prev);
+        document.getElementById('homeBtn').addEventListener('click', home);
+        document.getElementById('endBtn').addEventListener('click', end);
+        document.getElementById('restartBtn').addEventListener('click', restart);
         document.getElementById('fullscreenBtn').addEventListener('click', toggleFullscreen);
-        document.getElementById('fontPlus').addEventListener('click', () => { changeFontSize(2); reportData.fontChanges++; });
-        document.getElementById('fontMinus').addEventListener('click', () => { changeFontSize(-2); reportData.fontChanges++; });
-        document.getElementById('themeBtn').addEventListener('click', () => { toggleTheme(); reportData.themeChanges++; });
+        document.getElementById('fontPlus').addEventListener('click', () => changeFontSize(2));
+        document.getElementById('fontMinus').addEventListener('click', () => changeFontSize(-2));
+        document.getElementById('themeBtn').addEventListener('click', toggleTheme);
+        document.getElementById('shareBtn').addEventListener('click', shareWhatsApp);
         document.getElementById('speakBtn').addEventListener('click', speakText);
         document.getElementById('reportBtn').addEventListener('click', showReport);
-        
+
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') { next(); updateSlidesViewed(); }
-            if (e.key === 'ArrowLeft') { prev(); updateSlidesViewed(); }
-            if (e.key === 'Home') { home(); updateSlidesViewed(); }
-            if (e.key === 'End') { end(); updateSlidesViewed(); }
+            if (e.key === 'ArrowRight') next();
+            if (e.key === 'ArrowLeft') prev();
+            if (e.key === 'Home') home();
+            if (e.key === 'End') end();
             if (e.key === 'f') toggleFullscreen();
         });
 
         goToSlide(0);
-        updateSlidesViewed();
     </script>
 </body>
-    </html>
+</html>
